@@ -24,7 +24,7 @@ public class TextCell extends Cell
 	
 	public String getValue()
 	{
-		value = formatInput(value);
+//		value = formatInput(value);
 		return value;
 	}
 
@@ -33,7 +33,7 @@ public class TextCell extends Cell
 		this.value = newValue;
 	}
 	
-	public String specValue(){
+	public String specFormat(){
 		String temp = this.value;
 		char c = temp.charAt(0);// this needs to be improved; temp might be ""
 		String rst = temp.substring(1,temp.length()-1); 
