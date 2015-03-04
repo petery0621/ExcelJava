@@ -1,5 +1,7 @@
 package Excel;
 
+import java.util.Scanner;
+
 public class SpreadsheetLocation {
 	// parse a string to an array of int coordinates
 	
@@ -16,7 +18,9 @@ public class SpreadsheetLocation {
 	
 	public SpreadsheetLocation(String location)
 	{
+		location = location.trim(); 
 		// input: 1 letter & up to 2 digits
+		
 		if (location.length() >= 2 && location.length() <= 3){
 			
 			char letter = location.charAt(0);
@@ -27,6 +31,7 @@ public class SpreadsheetLocation {
 			col = letter - YAXIS; 
 			
 		}else{
+			System.out.println("location:"+ "$"+location+"$");
 			System.out.println("Location format not corrrect");
 		}
 	}
@@ -40,5 +45,5 @@ public class SpreadsheetLocation {
 	{
 		return col;
 	}
-	
+
 }
