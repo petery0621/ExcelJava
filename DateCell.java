@@ -29,7 +29,7 @@ public class DateCell extends Cell
 	
 	public String getValue()
 	{
-		value = formatInput(value);
+//		value = formatInput(value);
 		return value;
 	}
 
