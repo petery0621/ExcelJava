@@ -26,7 +26,7 @@ public class ValueCell extends Cell
 	
 	public String getValue()
 	{
-		value = formatInput(value);
+//		value = formatInput(value);
 		return value;
 	}
 
@@ -35,8 +35,8 @@ public class ValueCell extends Cell
 		this.value = newValue;
 	}
 	
-	public void specFormat(){
-		
+	public String specFormat(){
+		return this.value;
 	}
 
 	
