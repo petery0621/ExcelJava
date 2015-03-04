@@ -47,7 +47,7 @@ abstract class Cell {
 	// To truncate the longer strings and "centered" them
 	// Called when displaying the whole  
 	public String formatInput(String newInput)
-	{
+	{ 
 		Spreadsheet sheet = new Spreadsheet();
 		String out = "";
 		for(int i = 0; i < (sheet.COL_WIDTH - newInput.length())/2; i++)
@@ -56,7 +56,7 @@ abstract class Cell {
 		}
 		if (newInput.length() > 12)
 		{
-			out = newInput.substring(0, 10) + ">";
+			out = newInput.substring(0, 11) + ">";
 		}
 		else
 		{
@@ -70,7 +70,10 @@ abstract class Cell {
 		return out;
 	}
 	
-		
+	public String specFormat(){
+		// for displaying the whole sheet
+		return "Warning: msg not overriden"; 
+	}
 		
 		
 	
