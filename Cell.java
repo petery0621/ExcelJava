@@ -63,10 +63,10 @@ abstract class Cell {
 		
 		Spreadsheet sheet = new Spreadsheet();
 		String out = "";
-		int limit = (sheet.COL_WIDTH - newInput.length())/2
+		int limit = (sheet.COL_WIDTH - newInput.length())/2;
 		
 		if(newInput.length()>=2 && 
-		   newInput.charAt(0).equals('-') &&
+		   newInput.charAt(0)=='-' &&
 		   Character.isDigit(newInput.charAt(1)))
 			limit --; 
 		
@@ -74,7 +74,7 @@ abstract class Cell {
 			out = out + " ";
 		}
 		
-		if (newInput.length() >= 12){
+		if (newInput.length() > 12){
 			out = newInput.substring(0, 11) + ">";
 		}else{
 			out = out + newInput;
