@@ -17,8 +17,7 @@ public class Program {
         Spreadsheet sheet = new Spreadsheet();
 		Scanner userInput = new Scanner(System.in);
 		String input = userInput.nextLine();
-		//What if user input is not "print"? 
-		
+
 //		Command loop takes command from user until "exit".
 		while(!input.equalsIgnoreCase("exit")){
 			
@@ -27,7 +26,6 @@ public class Program {
 			
 			System.out.println();
 			System.out.println("Enter a command: ");
-			//What if user input not "exit"?
 			input = userInput.next();
 		}
 		System.out.println("Farewell!");
