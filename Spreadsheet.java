@@ -63,10 +63,10 @@ public class Spreadsheet {
 			if (operator == "clear"){// clear a cell
 			
 			}else if(operator == "save"){// save a txt file
-				
+				// To do ..
 				
 			}else if(operator == "load"){// load a txt file
-				
+				// To do ..
 				
 			}
 			
