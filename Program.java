@@ -10,7 +10,7 @@ public class Program {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Welcome to TextExcel!\n");
+	System.out.println("Welcome to TextExcel!\n");
       
         System.out.println("Enter a command: ");
 //      Calls Spreadsheet and Scanner
@@ -18,6 +18,7 @@ public class Program {
 		Scanner userInput = new Scanner(System.in);
 		String input = userInput.nextLine();
 		//What if user input is not "print"? 
+		//-> Has been taken care of in processCommand(..)
 		
 //		Command loop takes command from user until "exit".
 		while(!input.equalsIgnoreCase("exit")){
@@ -28,6 +29,7 @@ public class Program {
 			System.out.println();
 			System.out.println("Enter a command: ");
 			//What if user input not "exit"?
+			// -> Again, parsing user input is in processCommand(..)
 			input = userInput.nextLine();
 		}
 		System.out.println("Farewell!");
