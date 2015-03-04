@@ -18,8 +18,11 @@ public class Spreadsheet {
 
 	// for testing purpose
 	public static void main(String[] args){
-		Spreadsheet  sheet = new Spreadsheet(); 
+		Spreadsheet sheet = new Spreadsheet(); 
+	
 		
+		sheet.processCommand("A1 = 6");
+		sheet.processCommand("B1 = 6");
 		sheet.processCommand("B2 = 6");
 		sheet.processCommand("B3 = -6.2");
 		sheet.processCommand("B4 = 6/6/1993");		
@@ -31,7 +34,12 @@ public class Spreadsheet {
 		sheet.processCommand("B4");		
 		sheet.processCommand("A2");		
 		sheet.processCommand("C2");
-	
+		sheet.processCommand("clear B1");
+		sheet.processCommand("B1");
+		sheet.processCommand("print");
+		sheet.processCommand("clear");
+		sheet.processCommand("print");
+
 	}
 
 	//	Spreadsheet constructor
@@ -59,13 +67,15 @@ public class Spreadsheet {
 
 		}else if(input.contains(" ")){// operations like clear
 			String[] temp = input.split(" ", 2);// split into two by " "
-			String operator = temp[0]; 
-			if (operator == "clear"){// clear a cell
-			
-			}else if(operator == "save"){// save a txt file
+			String operator = temp[0].trim();
+			String operand = temp[1].trim(); 
+			if (operator.equals("clear")){// clear a cell
+				SpreadsheetLocation loc = new SpreadsheetLocation(operand);
+				cells[loc.getRow()][loc.getCol()] = new EmptyCell(); 
+			}else if(operator.equals("save")){// save a txt file
 				// To do ..
 				
-			}else if(operator == "load"){// load a txt file
+			}else if(operator.equals("load")){// load a txt file
 				// To do ..
 				
 			}
@@ -78,6 +88,12 @@ public class Spreadsheet {
 					System.out.print(table[i][j]);
 				}
 				System.out.println(decoration);
+			}
+		}else if (input.equalsIgnoreCase("clear")){
+			for(int i=0;i<cells.length;i++){
+				for(int j=0;j<cells[0].length;j++){
+					cells[i][j] = new EmptyCell(); 
+				}
 			}
 		}else{// display a cell
 			SpreadsheetLocation loc = new SpreadsheetLocation(input);
@@ -122,11 +138,13 @@ public class Spreadsheet {
 
 	//	Method prints the String Grid
 	public String[][] getGridText()
-	{		
-
+	{	
 		//		Sets the x and y axis labels
-		//		First box
-		table[0][0] = cells[0][0].abbreviatedCellText() + "|";
+		resetAxis(); 
+		
+		Cell c = new EmptyCell(); 
+		//		First box (why?)
+		table[0][0] = c.abbreviatedCellText() + "|";
 
 		//		First Row
 		for(int i = 1; i < table[0].length; i++){
@@ -147,7 +165,8 @@ public class Spreadsheet {
 		//		Sets each cell in the grid to a value
 		for(int i = 1; i < table.length; i++){
 			for(int j = 1; j < table[i].length; j++){
-				table[i][j] = cells[i-1][j-1].abbreviatedCellText() + "|";
+				String str = cells[i-1][j-1].specFormat(); 
+				table[i][j] =  cells[i-1][j-1].formatInput(str) + "|";
 			}	
 		}
 		return table;
@@ -160,5 +179,11 @@ public class Spreadsheet {
 			decoration += "------------+";
 		}
 		return "\n" +decoration;
+	}
+	
+	private void resetAxis(){
+		yaxis = 'A'; 
+		xaxis = 1;
+	
 	}
 }
